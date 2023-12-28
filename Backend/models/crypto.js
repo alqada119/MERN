@@ -1,5 +1,5 @@
 
-const mongoose=require("mongoose")
+import mongoose from "mongoose"
 const cryptoSchema=mongoose.Schema({
     name:String,
     UOM:String,

@@ -1,12 +1,13 @@
-const express=require("express");
-const mongodb=require("mongodb");
-const mongoose=require("mongoose");
-const dotenv=require("dotenv");
+import express from 'express'
+import mongodb from 'mongodb'
+import mongoose from 'mongoose';
+import dotenv from 'dotenv'
+import cors from 'cors'
+import { userModel } from "./models/users.js";
 dotenv.config()
-const cors=require("cors");
 const port=3100;
 const app=express()
-const mongourl="";
+const mongourl=process.env.mongoUrl;
 app.use(cors())
 app.use(express.json())
 mongoose.connect(mongourl)
@@ -15,6 +16,18 @@ mongoose.connect(mongourl)
     app.listen(port,()=>{
         console.log("Listening")
     })
+    try {
+        userModel.createCollection()
+        .then(
+            console.log("Collection Created")
+        )
+        .catch()(
+            console.log("Error")
+        )
+    } catch (error) {
+        console.log(error)
+    }
+    
 })
 .catch((err)=>{
     console.log(err)
