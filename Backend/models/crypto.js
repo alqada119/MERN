@@ -5,4 +5,4 @@ const cryptoSchema=mongoose.Schema({
     UOM:String,
     conversion:String
 })
-export const bookModel=mongoose.model("Crypto",cryptoSchema)
+export const cryptoModel=mongoose.model("Crypto",cryptoSchema)
